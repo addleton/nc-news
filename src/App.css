@@ -62,10 +62,24 @@ li {
   justify-content: space-around;
 }
 
+.single-article-card {
+  background-color: pink;
+}
+
 .article-card-footer-element {
   display: flex;
 }
 
+.single-article-card-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
 .article-card-footer-element > p {
   margin-right: 1rem;
+}
+
+.single-article-card-img {
+  width: 25rem;
+  height: auto;
 }

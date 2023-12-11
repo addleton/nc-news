@@ -5,3 +5,7 @@ const api = axios.create({ baseURL: "https://nc-news-xe7y.onrender.com/api" });
 export const getAllArticles = () => {
   return api.get("/articles");
 };
+
+export const getArticleById = (articleId) => {
+  return api.get(`/articles/${articleId}`);
+};
