@@ -12,7 +12,6 @@ function App() {
   return (
     <>
       <Header />
-      <Nav />
       <Routes>
         <Route path="/" element={<Articles />} />
         <Route path="/articles/:articleid" element={<SingleArticle />} />

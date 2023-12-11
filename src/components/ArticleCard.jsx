@@ -14,7 +14,9 @@ const ArticleCard = ({ article }) => {
       <Card variant="soft" color="neutral" sx={{ width: 320 }}>
         <CardOverflow>
           <AspectRatio ratio="2">
-            <img src={article.article_img_url} loading="lazy" alt="" />
+            <Link to={`/articles/${article.article_id}`}>
+              <img src={article.article_img_url} loading="lazy" alt="" />
+            </Link>
           </AspectRatio>
         </CardOverflow>
         <CardContent>
