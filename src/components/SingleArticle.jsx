@@ -1,21 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import SingleArticleCard from "./SingleArticleCard";
 
-const SingleArticle = ({ articles, setArticles }) => {
+const SingleArticle = () => {
+  const [singleArticle, setSingleArticle] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
   const { articleid } = useParams();
   useEffect(() => {
     getArticleById(articleid).then(({ data: { article } }) => {
-      setArticles(article);
+      setSingleArticle(article);
+      setIsLoading(false);
     });
   }, []);
 
+  if (isLoading) {
+    return <p>loading......</p>;
+  }
+
   return (
     <>
-    <SingleArticleCard article={articles}/>
+      <SingleArticleCard article={singleArticle} />
     </>
-  )
+  );
 };
 
 export default SingleArticle;

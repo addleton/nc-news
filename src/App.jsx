@@ -17,7 +17,7 @@ function App() {
         <Route
           path="/articles/:articleid"
           element={
-            <SingleArticle articles={articles} setArticles={setArticles} />
+            <SingleArticle />
           }
         />
       </Routes>
