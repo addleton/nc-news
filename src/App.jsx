@@ -3,12 +3,12 @@ import "./App.css";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
+import "@fontsource/inter";
 
 function App() {
   return (
     <>
       <Header />
-      <Nav />
       <Routes>
         <Route path="/" element={<Articles />} />
       </Routes>
