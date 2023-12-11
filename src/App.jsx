@@ -14,7 +14,12 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Articles />} />
-	<Route path="/articles/:articleid" element={<SingleArticle articles={articles} setArticles={setArticles
+        <Route
+          path="/articles/:articleid"
+          element={
+            <SingleArticle articles={articles} setArticles={setArticles} />
+          }
+        />
       </Routes>
     </>
   );
