@@ -3,17 +3,19 @@ import "./App.css";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
-import { useState } from "react";
 import "@fontsource/inter";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Articles />} />
-        <Route path="/articles/:articleid" element={<SingleArticle />} />
-      </Routes>
+      <UserProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Articles />} />
+          <Route path="/articles/:articleid" element={<SingleArticle />} />
+        </Routes>
+      </UserProvider>
     </>
   );
 }

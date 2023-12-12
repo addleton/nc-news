@@ -11,12 +11,20 @@ export const getArticleById = (articleId) => {
 };
 
 export const getCommentsByArticle = (articleId) => {
-  return api.get(`/articles/${articleId}/comments`);
+  return api.get(`/articles/${articleId}/comments?order=asc`);
 };
 
 export const patchArticleVotes = (articleId, votes) => {
   const vote = {
     inc_votes: votes,
   };
-  return api.patch(`articles/${articleId}`, vote);
+  return api.patch(`/articles/${articleId}`, vote);
+};
+
+export const postCommentByArticle = (articleId, user, input) => {
+  const comment = {
+    username: user,
+    body: input,
+  };
+  return api.post(`/articles/${articleId}/comments`, comment);
 };

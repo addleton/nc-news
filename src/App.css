@@ -63,7 +63,18 @@ li {
 }
 
 .single-article-card {
-  background-color: pink;
+  margin-top: 1rem;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.single-article-card > p {
+  margin-left: 0.4rem;
+  margin-right: 0.2rem;
+}
+
+.single-article-card > h2 {
+  margin-left: 0.6rem;
 }
 
 .article-card-footer-element {
@@ -80,7 +91,7 @@ li {
 }
 
 .single-article-card-img {
-  width: 25rem;
+  width: 100%;
   height: auto;
 }
 
@@ -147,4 +158,8 @@ li {
 
 p {
   font-family: "Montserrat", sans-serif;
+}
+
+.add-comment-form {
+  margin-top: 1rem;
 }
