@@ -9,8 +9,12 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { patchArticleVotes } from "../utils/api";
+import { useState } from "react";
+import Alert from "@mui/joy/Alert";
 
 const ArticleCard = ({ article, setArticles }) => {
+  const [isError, setIsError] = useState(false);
+
   const handleUpvote = (selectedArticle) => {
     setArticles((currentArticles) => {
       return currentArticles.map((article) => {
@@ -20,7 +24,13 @@ const ArticleCard = ({ article, setArticles }) => {
         return article;
       });
     });
-    patchArticleVotes(article.article_id, 1);
+    patchArticleVotes(article.article_id, 1)
+      .then(() => {
+        setIsError(false);
+      })
+      .catch((err) => {
+        setIsError(true);
+      });
   };
 
   const handleDownvote = (selectedArticle) => {
@@ -32,8 +42,20 @@ const ArticleCard = ({ article, setArticles }) => {
         return article;
       });
     });
-    patchArticleVotes(article.article_id, -1);
+    patchArticleVotes(article.article_id, -1)
+      .then(() => {
+        setIsError(false);
+      })
+      .catch((err) => {
+        setIsError(true);
+      });
   };
+
+  if (isError) {
+    <Alert color="danger" size="lg" variant="soft">
+      There seems to have been an issue. Reload and try again.
+    </Alert>;
+  }
 
   return (
     <section className="article-card">

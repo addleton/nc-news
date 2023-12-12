@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import LinearProgress from "@mui/joy/LinearProgress";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -14,7 +15,11 @@ const Articles = () => {
   }, []);
 
   if (isLoading) {
-    return <p>loading......</p>;
+    return (
+    <section className="loading-bar">
+          <LinearProgress color="danger" determinate={false} size="lg" />
+    </section>
+)
   }
 
   return (
@@ -22,7 +27,13 @@ const Articles = () => {
       <h2>Articles</h2>
       <ul>
         {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} setArticles={setArticles} />;
+          return (
+            <ArticleCard
+              key={article.article_id}
+              article={article}
+              setArticles={setArticles}
+            />
+          );
         })}
       </ul>
     </section>
