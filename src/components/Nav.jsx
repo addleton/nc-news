@@ -16,7 +16,9 @@ const Nav = () => {
         <MoreVert />
       </MenuButton>
       <Menu>
-        <Link to='/'><MenuItem>Articles</MenuItem></Link>
+        <Link to="/">
+          <MenuItem>Articles</MenuItem>
+        </Link>
         <MenuItem>Topics</MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>

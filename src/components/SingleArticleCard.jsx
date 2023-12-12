@@ -3,7 +3,11 @@ const SingleArticleCard = ({ article }) => {
     <article className="single-article-card">
       {" "}
       <h2>{article.title}</h2>
-      <img src={article.article_img_url} alt="" className="single-article-card-img" />
+      <img
+        src={article.article_img_url}
+        alt=""
+        className="single-article-card-img"
+      />
       <p>{article.body}</p>
       <section className="single-article-card-footer">
         <p>{article.topic}</p>

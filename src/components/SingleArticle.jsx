@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import SingleArticleCard from "./SingleArticleCard";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
-  const [singleArticle, setSingleArticle] = useState([])
+  const [singleArticle, setSingleArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { articleid } = useParams();
   useEffect(() => {
@@ -21,6 +22,7 @@ const SingleArticle = () => {
   return (
     <>
       <SingleArticleCard article={singleArticle} />
+      <Comments articleId={singleArticle.article_id} />
     </>
   );
 };
