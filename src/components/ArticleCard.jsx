@@ -52,9 +52,11 @@ const ArticleCard = ({ article, setArticles }) => {
   };
 
   if (isError) {
-    <Alert color="danger" size="lg" variant="soft">
-      There seems to have been an issue. Reload and try again.
-    </Alert>;
+    return (
+      <Alert color="danger" size="lg" variant="soft">
+        There seems to have been an issue. Reload and try again.
+      </Alert>
+    );
   }
 
   return (

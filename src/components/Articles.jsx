@@ -16,10 +16,11 @@ const Articles = () => {
 
   if (isLoading) {
     return (
-    <section className="loading-bar">
-          <LinearProgress color="danger" determinate={false} size="lg" />
-    </section>
-)
+      <section className="loading-bar">
+        <p>Retrieving content...</p>
+        <LinearProgress color="danger" determinate={false} size="lg" />
+      </section>
+    );
   }
 
   return (
