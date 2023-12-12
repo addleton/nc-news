@@ -111,3 +111,40 @@ li {
 #single-comment-vote {
   grid-area: 11 / 12 / 13 / 13;
 }
+
+.article-votes {
+  display: flex;
+  align-items: center;
+}
+
+.article-votes > button {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.article-votes > p {
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+}
+
+.loading-bar {
+  display: flex;
+  width: 80vw;
+  height: 80vh;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.loading-bar > p {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
