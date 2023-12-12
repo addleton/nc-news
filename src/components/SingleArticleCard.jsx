@@ -1,12 +1,16 @@
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { patchArticleVotes } from "../utils/api";
+import { useState } from "react";
 
 const SingleArticleCard = ({ article }) => {
+  const [singleVotes, setSingleVotes] = useState(article.votes);
   const handleUpvote = () => {
+    setSingleVotes(singleVotes + 1);
     patchArticleVotes(article.article_id, 1);
   };
   const handleDownvote = () => {
+    setSingleVotes(singleVotes - 1);
     patchArticleVotes(article.article_id, -1);
   };
 
@@ -32,7 +36,7 @@ const SingleArticleCard = ({ article }) => {
           >
             <ThumbUpOffAltIcon fontSize="small" />
           </button>
-          <p>{article.votes}</p>
+          <p>{singleVotes}</p>
           <button
             onClick={() => {
               handleDownvote();

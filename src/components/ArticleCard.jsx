@@ -5,10 +5,36 @@ import CardContent from "@mui/joy/CardContent";
 import CardOverflow from "@mui/joy/CardOverflow";
 import Divider from "@mui/joy/Divider";
 import Typography from "@mui/joy/Typography";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import { patchArticleVotes } from "../utils/api";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, setArticles }) => {
+  const handleUpvote = (selectedArticle) => {
+    setArticles((currentArticles) => {
+      return currentArticles.map((article) => {
+        if (article === selectedArticle) {
+          return { ...article, votes: article.votes + 1 };
+        }
+        return article;
+      });
+    });
+    patchArticleVotes(article.article_id, 1);
+  };
+
+  const handleDownvote = (selectedArticle) => {
+    setArticles((currentArticles) => {
+      return currentArticles.map((article) => {
+        if (article === selectedArticle) {
+          return { ...article, votes: article.votes - 1 };
+        }
+        return article;
+      });
+    });
+    patchArticleVotes(article.article_id, -1);
+  };
+
   return (
     <section className="article-card">
       <Card variant="soft" color="neutral" sx={{ width: 320 }}>
@@ -37,16 +63,23 @@ const ArticleCard = ({ article }) => {
               <PersonOutlineOutlinedIcon />
             </section>
             <Divider orientation="vertical" />
-            <section className="article-card-footer-element">
-              <Typography
-                level="body-md"
-                fontWeight="md"
-                textColor="text.secondary"
+            <div className="article-votes">
+              <button
+                onClick={() => {
+                  handleUpvote(article);
+                }}
               >
-                {article.votes}
-              </Typography>
-              <ThumbUpOutlinedIcon />
-            </section>
+                <ThumbUpOffAltIcon fontSize="small" />
+              </button>
+              <p>{article.votes}</p>
+              <button
+                onClick={() => {
+                  handleDownvote(article);
+                }}
+              >
+                <ThumbDownOffAltIcon fontSize="small" />
+              </button>
+            </div>
           </CardContent>
         </CardOverflow>
       </Card>
