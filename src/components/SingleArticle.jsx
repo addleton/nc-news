@@ -21,7 +21,10 @@ const SingleArticle = () => {
 
   return (
     <>
-      <SingleArticleCard article={singleArticle} />
+      <SingleArticleCard
+        article={singleArticle}
+        setSingleArticle={setSingleArticle}
+      />
       <Comments articleId={singleArticle.article_id} />
     </>
   );
