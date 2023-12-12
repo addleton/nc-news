@@ -83,3 +83,31 @@ li {
   width: 25rem;
   height: auto;
 }
+
+#comment-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.comment-card {
+  margin-bottom: 1rem;
+  width: 90vw;
+}
+
+#single-comment {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+#single-comment-body {
+  grid-area: 1 / 1 / 13 / 12;
+}
+
+#single-comment-vote {
+  grid-area: 11 / 12 / 13 / 13;
+}
