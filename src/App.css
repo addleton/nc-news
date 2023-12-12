@@ -111,3 +111,20 @@ li {
 #single-comment-vote {
   grid-area: 11 / 12 / 13 / 13;
 }
+
+.article-votes {
+  display: flex;
+  align-items: center;
+}
+
+.article-votes > button {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.article-votes > p {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  font-family: "Montserrat", sans-serif;
+  
+}
