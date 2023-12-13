@@ -20,7 +20,19 @@ nav {
   border: 2px solid orange;
   background-color: orange;
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
 }
+
+.nav-button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
 
 ul {
   list-style-type: none;
