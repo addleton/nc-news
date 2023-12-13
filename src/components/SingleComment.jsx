@@ -23,7 +23,9 @@ const SingleComment = ({ comment, setComments }) => {
     deleteSingleUserComment(comment.comment_id)
       .then(() => {
         setComments((currentComments) => {
-          return currentComments.slice(1);
+          return currentComments.filter((selectedComment) => {
+            return comment.comment_id !== selectedComment.comment_id;
+          });
         });
         setIsDeleted(false);
       })
