@@ -5,7 +5,6 @@ import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import "@fontsource/inter";
 import { UserProvider } from "./context/UserContext";
-import Nav from "./components/Nav";
 
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
     <>
       <UserProvider>
         <Header />
-        <Nav/>
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/articles/:articleid" element={<SingleArticle />} />
