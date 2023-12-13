@@ -171,3 +171,9 @@ p {
 .add-comment-form {
   margin-top: 1rem;
 }
+
+#topic-selector {
+  border: none;
+  background-color: transparent;
+  margin-top: 1rem;
+}

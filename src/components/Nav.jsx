@@ -17,9 +17,9 @@ const Nav = () => {
       </MenuButton>
       <Menu>
         <Link to="/">
-          <MenuItem>Articles</MenuItem>
+          <MenuItem>Home</MenuItem>
         </Link>
-        <MenuItem>Topics</MenuItem>
+        <MenuItem></MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
     </Dropdown>

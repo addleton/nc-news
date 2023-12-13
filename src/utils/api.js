@@ -28,3 +28,11 @@ export const postCommentByArticle = (articleId, user, input) => {
   };
   return api.post(`/articles/${articleId}/comments`, comment);
 };
+
+export const getAllTopics = () => {
+  return api.get("/topics");
+};
+
+export const getArticlesByTopic = (topic) => {
+  return api.get(`/articles?topic=${topic}`);
+};
