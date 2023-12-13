@@ -18,7 +18,6 @@ const SingleComment = ({ comment }) => {
         sx={{
           maxWidth: "100%",
           overflow: "auto",
-          resize: "horizontal",
         }}
       >
         <Box sx={{ display: "flex", gap: 1 }}>

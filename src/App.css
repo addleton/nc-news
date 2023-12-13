@@ -109,18 +109,26 @@ li {
 
 #single-comment {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
 #single-comment-body {
-  grid-area: 1 / 1 / 13 / 12;
+  grid-area: 1 / 1 / 6 / 7;
+}
+
+#single-delete-comment {
+  grid-area: 6 / 1 / 7 / 4;
+  display: flex;
+  justify-content: start;
 }
 
 #single-comment-vote {
-  grid-area: 11 / 12 / 13 / 13;
+  grid-area: 6 / 4 / 7 / 7;
+  display: flex;
+  justify-content: end;
 }
 
 .article-votes {
