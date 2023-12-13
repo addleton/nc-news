@@ -11,7 +11,7 @@ const Comments = ({ articleId }) => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [comments]);
+  }, []);
 
   if (isLoading) {
     return <p>fetching comments...</p>;
@@ -22,7 +22,13 @@ const Comments = ({ articleId }) => {
       <CommentAdder setComments={setComments} articleId={articleId} />
       <ul id="comment-section">
         {comments.map((comment) => {
-          return <SingleComment comment={comment} key={comment.comment_id} />;
+          return (
+            <SingleComment
+              setComments={setComments}
+              comment={comment}
+              key={comment.comment_id}
+            />
+          );
         })}
       </ul>
     </>
