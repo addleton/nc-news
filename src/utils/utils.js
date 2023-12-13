@@ -7,5 +7,7 @@ export const convertTime = (timestamp) => {
 };
 
 export const getTopicArticles = (articles, topic) => {
-  
-}
+  return articles.filter((article) => {
+    return article.topic === topic;
+  });
+};
