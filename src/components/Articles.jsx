@@ -34,6 +34,18 @@ const Articles = () => {
 
   return (
     <section id="article-container">
+      <div id="article-filter">
+        <select placeholder="filter" name="sort" id="">
+          Sort
+          <option value="">Date</option>
+          <option value="">Comment Count</option>
+          <option value="">Votes</option>
+        </select>
+        <input type="radio" value="asc" id='asc'></input>
+        <label htmlFor="asc">ASC</label>
+        <input type="radio" value="desc" id='desc'></input>
+        <label htmlFor="desc">DESC</label>
+      </div>
       <ul>
         {articles.map((article) => {
           return (
