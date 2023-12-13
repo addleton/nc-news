@@ -11,7 +11,7 @@ const Comments = ({ articleId }) => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, []);
+  }, [comments]);
 
   if (isLoading) {
     return <p>fetching comments...</p>;

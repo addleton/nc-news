@@ -171,3 +171,12 @@ p {
 .add-comment-form {
   margin-top: 1rem;
 }
+
+#delete-button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  color: red;
+  font-family: "Montserrat", sans-serif;
+}
