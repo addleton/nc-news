@@ -13,14 +13,18 @@ const Articles = () => {
   const paramValue = query.get("topic");
 
   useEffect(() => {
-    getAllArticles().then(({ data: { articles } }) => {
-      setArticles(articles);
-      if (paramValue) {
-        const newArticles = getTopicArticles(articles, paramValue);
-        setArticles(newArticles);
-      }
-      setIsLoading(false);
-    });
+    getAllArticles()
+      .then(({ data: { articles } }) => {
+        setArticles(articles);
+        if (paramValue) {
+          const newArticles = getTopicArticles(articles, paramValue);
+          setArticles(newArticles);
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [articles]);
 
   if (isLoading) {
