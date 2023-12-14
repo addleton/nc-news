@@ -4,34 +4,32 @@ import ArticleCard from "./ArticleCard";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { useLocation } from "react-router-dom";
 import { getTopicArticles } from "../utils/utils";
+import Error from "./Error";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [apiError, setApiError] = useState({})
+  const [isError, setIsError] = useState(false);
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const paramValue = query.get("topic");
 
   useEffect(() => {
-    getAllArticles()
-      .then(({ data: { articles } }) => {
-        setArticles(articles);
-        if (paramValue) {
-          const newArticles = getTopicArticles(articles, paramValue);
+    getAllArticles().then(({ data: { articles } }) => {
+      setIsError(false);
+      setArticles(articles);
+      if (paramValue) {
+        const newArticles = getTopicArticles(articles, paramValue);
+        if (!newArticles.length) {
+          setIsError(true);
+        } else {
+          setIsError(false);
           setArticles(newArticles);
         }
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err, 'error here')
-        setApiError(err)
-        setIsLoading(false)
-        setArticles([])
-      });
-  }, []);
-
-  console.log(apiError)
+      }
+      setIsLoading(false);
+    });
+  }, [paramValue]);
 
   if (isLoading) {
     return (
@@ -40,23 +38,25 @@ const Articles = () => {
         <LinearProgress color="danger" determinate={false} size="lg" />
       </section>
     );
+  } else if (isError) {
+    return <Error message="Topic not found..." />;
+  } else {
+    return (
+      <section id="article-container">
+        <ul>
+          {articles.map((article) => {
+            return (
+              <ArticleCard
+                key={article.article_id}
+                article={article}
+                setArticles={setArticles}
+              />
+            );
+          })}
+        </ul>
+      </section>
+    );
   }
-
-  return (
-    <section id="article-container">
-      <ul>
-        {articles.map((article) => {
-          return (
-            <ArticleCard
-              key={article.article_id}
-              article={article}
-              setArticles={setArticles}
-            />
-          );
-        })}
-      </ul>
-    </section>
-  );
 };
 
 export default Articles;
