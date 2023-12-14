@@ -7,7 +7,15 @@ export const getAllArticles = () => {
 };
 
 export const getArticleById = (articleId) => {
-  return api.get(`/articles/${articleId}`);
+  return api.get(`/articles/${articleId}`).catch((err) => {
+    const jsonError = err.toJSON();
+    if (jsonError.status === 404) {
+      Promise.reject({
+        status: jsonError.status,
+        message: "Article not found...",
+      });
+    }
+  });
 };
 
 export const getCommentsByArticle = (articleId) => {

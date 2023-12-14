@@ -8,6 +8,7 @@ import { getTopicArticles } from "../utils/utils";
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [apiError, setApiError] = useState({})
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const paramValue = query.get("topic");
@@ -23,9 +24,13 @@ const Articles = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setApiError(err)
+        setIsLoading(false)
+        setArticles([])
       });
-  }, [articles]);
+  }, []);
+
+  console.log(apiError)
 
   if (isLoading) {
     return (
