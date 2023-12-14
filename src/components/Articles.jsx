@@ -3,7 +3,6 @@ import { getAllArticles, getAllTopics, getArticlesByTopic } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { getTopicArticles } from "../utils/utils";
 import Error from "./Error";
 
