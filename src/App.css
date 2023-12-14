@@ -20,6 +20,17 @@ nav {
   border: 2px solid orange;
   background-color: orange;
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
 }
 
 ul {
@@ -196,4 +207,10 @@ p {
   color: red;
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
+}
+
+#topic-selector {
+  border: none;
+  background-color: transparent;
+  margin-top: 1rem;
 }

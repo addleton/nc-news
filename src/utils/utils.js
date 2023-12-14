@@ -5,3 +5,9 @@ export const convertTime = (timestamp) => {
   const day = dateObject.getUTCDate();
   return `${day}-${month}-${year}`;
 };
+
+export const getTopicArticles = (articles, topic) => {
+  return articles.filter((article) => {
+    return article.topic === topic;
+  });
+};

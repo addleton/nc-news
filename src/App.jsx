@@ -5,15 +5,19 @@ import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import "@fontsource/inter";
 import { UserProvider } from "./context/UserContext";
+import Nav from "./components/Nav";
+
 
 function App() {
   return (
     <>
       <UserProvider>
         <Header />
+        <Nav/>
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/articles/:articleid" element={<SingleArticle />} />
+          <Route path="/articles/*" element={<Articles/>} />
         </Routes>
       </UserProvider>
     </>
