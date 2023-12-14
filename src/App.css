@@ -196,3 +196,45 @@ p {
   background-color: transparent;
   margin-top: 1rem;
 }
+
+#article-filter {
+  display: inline;
+}
+
+#sort-by-bar {
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: orange;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 0.1rem;
+}
+
+#order-by-buttons {
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: orange;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+
+#order-by-buttons > label {
+  font-family: "Montserrat", sans-serif;
+}
+
+#submit-sort-button {
+  font-family: "Montserrat", sans-serif;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  margin-left: 0.1rem;
+}
+
+#article-filter {
+  display: flex;
+  margin-bottom: 1rem;
+}
