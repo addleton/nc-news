@@ -29,6 +29,10 @@ export const postCommentByArticle = (articleId, user, input) => {
   return api.post(`/articles/${articleId}/comments`, comment);
 };
 
+export const deleteSingleUserComment = (commentId) => {
+  return api.delete(`/comments/${commentId}`);
+};
+
 export const getAllTopics = () => {
   return api.get("/topics");
 };
