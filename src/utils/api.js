@@ -3,19 +3,13 @@ import axios from "axios";
 const api = axios.create({ baseURL: "https://nc-news-xe7y.onrender.com/api" });
 
 export const getAllArticles = () => {
-  return api.get("/articles");
+  return api.get("/articles").catch((err)=> {
+    console.log
+  })
 };
 
 export const getArticleById = (articleId) => {
-  return api.get(`/articles/${articleId}`).catch((err) => {
-    const jsonError = err.toJSON();
-    if (jsonError.status === 404) {
-      Promise.reject({
-        status: jsonError.status,
-        message: "Article not found...",
-      });
-    }
-  });
+  return api.get(`/articles/${articleId}`);
 };
 
 export const getCommentsByArticle = (articleId) => {

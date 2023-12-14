@@ -24,6 +24,7 @@ const Articles = () => {
         setIsLoading(false);
       })
       .catch((err) => {
+        console.log(err, 'error here')
         setApiError(err)
         setIsLoading(false)
         setArticles([])

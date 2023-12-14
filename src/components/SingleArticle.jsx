@@ -12,7 +12,9 @@ const SingleArticle = () => {
     getArticleById(articleid).then(({ data: { article } }) => {
       setSingleArticle(article);
       setIsLoading(false);
-    });
+    }).catch((err)=> {
+      console.log(err)
+    })
   }, []);
 
   if (isLoading) {
