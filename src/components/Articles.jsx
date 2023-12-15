@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAllArticles, getAllTopics, getArticlesByTopic } from "../utils/api";
+import { getAllArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { getTopicArticles } from "../utils/utils";
 import Error from "./Error";
-import Box from "@mui/joy/Box";
-import Drawer from "@mui/joy/Drawer";
-import Button from "@mui/joy/Button";
-import List from "@mui/joy/List";
-import Divider from "@mui/joy/Divider";
-import ListItem from "@mui/joy/ListItem";
-import ListItemButton from "@mui/joy/ListItemButton";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -65,11 +57,12 @@ const Articles = () => {
         setArticles(articles);
         setIsSorting(false);
         setIsLoading(false);
+        console.log(topicQuery);
       })
       .catch(({ response }) => {
         setApiError({ status: response.status, message: response.data.msg });
       });
-  }, [paramValue, sortQuery, topicQuery, isSorting]);
+  }, [sortQuery, topicQuery, isSorting]);
 
   if (isLoading) {
     return (
