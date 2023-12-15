@@ -4,6 +4,7 @@ import ArticleCard from "./ArticleCard";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getTopicArticles } from "../utils/utils";
+import Error from "./Error";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -13,6 +14,7 @@ const Articles = () => {
   const [sortQuery, setSortQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSorting, setIsSorting] = useState(false);
+  const [isError, setIsError] = useState(false);
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const paramValue = query.get("topic");
@@ -33,15 +35,21 @@ const Articles = () => {
 
   useEffect(() => {
     getAllArticles(sortQuery).then(({ data: { articles } }) => {
+      setIsError(false);
       setArticles(articles);
       if (paramValue) {
         const newArticles = getTopicArticles(articles, paramValue);
-        setArticles(newArticles);
+        if (!newArticles.length) {
+          setIsError(true);
+        } else {
+          setIsError(false);
+          setArticles(newArticles);
+        }
       }
       setIsSorting(false);
       setIsLoading(false);
     });
-  }, [sortQuery]);
+  }, [paramValue, sortQuery]);
 
   if (isLoading) {
     return (
@@ -50,58 +58,60 @@ const Articles = () => {
         <LinearProgress color="danger" determinate={false} size="lg" />
       </section>
     );
-  }
-
-  return (
-    <section id="article-container">
-      <div id="article-filter">
-        <select
-          onClick={updateSortInput}
-          placeholder="filter"
-          name="sort"
-          id="sort-by-bar"
-        >
-          Sort
-          <option value="created_at">Date</option>
-          <option value="comment_count">Comment Count</option>
-          <option value="votes">Votes</option>
-        </select>
-        <div id="order-by-buttons">
-          <input
-            onClick={updateOrderInput}
-            type="radio"
-            name="order"
-            value="desc"
-            id="desc"
-          ></input>
-          <label htmlFor="desc">DESC</label>
-          <input
-            onClick={updateOrderInput}
-            type="radio"
-            name="order"
-            value="asc"
-            id="asc"
-          ></input>
-          <label htmlFor="asc">ASC</label>
+  } else if (isError) {
+    return <Error message="Topic not found..." />;
+  } else {
+    return (
+      <section id="article-container">
+        <div id="article-filter">
+          <select
+            onClick={updateSortInput}
+            placeholder="filter"
+            name="sort"
+            id="sort-by-bar"
+          >
+            Sort
+            <option value="created_at">Date</option>
+            <option value="comment_count">Comment Count</option>
+            <option value="votes">Votes</option>
+          </select>
+          <div id="order-by-buttons">
+            <input
+              onClick={updateOrderInput}
+              type="radio"
+              name="order"
+              value="desc"
+              id="desc"
+            ></input>
+            <label htmlFor="desc">DESC</label>
+            <input
+              onClick={updateOrderInput}
+              type="radio"
+              name="order"
+              value="asc"
+              id="asc"
+            ></input>
+            <label htmlFor="asc">ASC</label>
+          </div>
+          <button id="submit-sort-button" onClick={handleSort}>
+            Sort
+          </button>
         </div>
-        <button id="submit-sort-button" onClick={handleSort}>
-          Sort
-        </button>
-      </div>
-      {isSorting ? <p>Sorting...</p> : null}
-      <ul>
-        {articles.map((article) => {
-          return (
-            <ArticleCard
-              key={article.article_id}
-              article={article}
-              setArticles={setArticles}
-            />
-          );
-        })}
-      </ul>
-    </section>
-  );
+        {isSorting ? <p>Sorting...</p> : null}
+        <ul>
+          {articles.map((article) => {
+            return (
+              <ArticleCard
+                key={article.article_id}
+                article={article}
+                setArticles={setArticles}
+              />
+            );
+          })}
+        </ul>
+      </section>
+    );
+  }
 };
 
 export default Articles;
